@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>KeyViewer</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
-<body style="background: #000;color: #fff">
-<div id="asdf"></div>
-asdf
+<body>
+<div id="root"></div>
 <script>
     const _ = require('lodash')
     const config = require('../config.json')
     const keys = config.keys
-    const asdf = document.querySelector('#asdf')
     const active = []
 
-    'use strict';
+    for (const key of keys) {
+        const elem = document.createElement('div')
+        elem.classList.add('key')
+        elem.innerText = key.label
+        document.querySelector('#root').append(elem)
+    }
 
     const ioHook = require('iohook');
 
     function update() {
-        asdf.innerHTML = active.map(r=>keys.find(x=>x.key===r).label).join(', ')
+        //asdf.innerHTML = active.map(r=>keys.find(x=>x.key===r).label).join(', ')
     }
 
     ioHook.on('keydown', event => {
