@@ -7,11 +7,35 @@
 </head>
 <body>
 <div id="root"></div>
+<div style="display: flex;">
+    <div id="total"></div>
+    <div id="kps">KPS</div>
+</div>
 <script>
     const _ = require('lodash')
     const config = require('../config.json')
     const keys = config.keys
     const active = []
+    let total = 0
+    let kps = 0
+    let kpsMax = 0
+
+    function update() {
+        document.querySelector('#total').innerHTML = `TOTAL<br>${total}`
+        document.querySelector('#kps').innerHTML = kps === 0 ? `KPS MAX<br>${kpsMax}` : `KPS<br>${kps}`
+    }
+
+    function addKps() {
+        kps++
+        if (kpsMax < kps) kpsMax = kps
+        update()
+        setTimeout(() => {
+            kps--
+            update()
+        }, 1000)
+    }
+
+    update()
 
     for (const [idx, key] of Object.entries(keys)) {
         const elem = document.createElement('div')
@@ -29,6 +53,8 @@
             if (!active.find(r=>r===event.keycode)) {
                 active.push(event.keycode)
                 k.elem.classList.add('active')
+                total++
+                addKps()
             }
         }
     })

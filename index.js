@@ -1,13 +1,11 @@
 const {app, BrowserWindow} = require('electron')
 const config = require('./config.json')
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
 let win
 
 function createWindow() {
     win = new BrowserWindow({
-        width: 50 * config.keys.length, height: 50, frame: false,
+        width: 50 * config.keys.length, height: 110, frame: false,
         alwaysOnTop: Boolean(config.top),
         webPreferences: {
             nodeIntegration: true

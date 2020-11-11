@@ -13,6 +13,28 @@
     color: #000;
 }
 
+#total {
+    width: 50vw;
+    height: 60px;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+}
+
+#kps {
+    width: 50vw;
+    height: 60px;
+    text-align: center;
+    background: #000;
+    color: #fff;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+}
+
 body {
     margin: 0;
     overflow: hidden;
