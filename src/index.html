@@ -8,19 +8,38 @@
 <div id="asdf"></div>
 asdf
 <script>
+    const _ = require('lodash')
+    const config = require('../config.json')
+    const keys = config.keys
+    const asdf = document.querySelector('#asdf')
+    const active = []
+
     'use strict';
 
     const ioHook = require('iohook');
 
-    ioHook.on('mousemove', event => {
-        console.log(event); // { type: 'mousemove', x: 700, y: 400 }
-    });
+    function update() {
+        asdf.innerHTML = active.map(r=>keys.find(x=>x.key===r).label).join(', ')
+    }
 
-    // Register and start hook
+    ioHook.on('keydown', event => {
+        if (keys.find(r=>r.key === event.keycode)) {
+            if (!active.find(r=>r===event.keycode)) {
+                active.push(event.keycode)
+            }
+        }
+        update()
+    })
+    ioHook.on('keyup', event => {
+        if (keys.find(r=>r.key === event.keycode)) {
+            if (active.find(r=>r===event.keycode)) {
+                _.remove(active, (i) => i === event.keycode)
+            }
+        }
+        update()
+    })
+
     ioHook.start();
-
-    // Alternatively, pass true to start in DEBUG mode.
-    ioHook.start(true);
 </script>
 </body>
 </html>

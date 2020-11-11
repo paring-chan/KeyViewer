@@ -2,8 +2,20 @@
   "top": true,
   "keys": [
     {
-      "key": "",
-      "label": "A"
+      "key": 32,
+      "label": "D"
+    },
+    {
+      "key": 33,
+      "label": "F"
+    },
+    {
+      "key": 36,
+      "label": "J"
+    },
+    {
+      "key": 37,
+      "label": "K"
     }
   ]
 }

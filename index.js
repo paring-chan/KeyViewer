@@ -7,7 +7,10 @@ let win
 
 function createWindow () {
     win = new BrowserWindow({ width: 800, height: 600, frame: false,
-    alwaysOnTop: Boolean(config.top)})
+    alwaysOnTop: Boolean(config.top), webPreferences: {
+        nodeIntegration: true
+        }
+         })
 
     win.loadFile('src/index.html')
 
