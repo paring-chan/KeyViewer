@@ -1,6 +1,19 @@
 .key {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     background: #000;
     color: #fff;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+}
+
+.key.active {
+    background: #fff;
+    color: #000;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
 }

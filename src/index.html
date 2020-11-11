@@ -13,34 +13,33 @@
     const keys = config.keys
     const active = []
 
-    for (const key of keys) {
+    for (const [idx, key] of Object.entries(keys)) {
         const elem = document.createElement('div')
         elem.classList.add('key')
         elem.innerText = key.label
+        keys[idx].elem = elem
         document.querySelector('#root').append(elem)
     }
 
     const ioHook = require('iohook');
 
-    function update() {
-        //asdf.innerHTML = active.map(r=>keys.find(x=>x.key===r).label).join(', ')
-    }
-
     ioHook.on('keydown', event => {
-        if (keys.find(r=>r.key === event.keycode)) {
+        const k = keys.find(r=>r.key === event.keycode)
+        if (k) {
             if (!active.find(r=>r===event.keycode)) {
                 active.push(event.keycode)
+                k.elem.classList.add('active')
             }
         }
-        update()
     })
     ioHook.on('keyup', event => {
-        if (keys.find(r=>r.key === event.keycode)) {
+        const k = keys.find(r=>r.key === event.keycode)
+        if (k) {
             if (active.find(r=>r===event.keycode)) {
                 _.remove(active, (i) => i === event.keycode)
+                k.elem.classList.remove('active')
             }
         }
-        update()
     })
 
     ioHook.start();
