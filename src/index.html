@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" style="-webkit-app-region: drag;">
+<head>
+    <meta charset="UTF-8">
+    <title>KeyViewer</title>
+</head>
+<body style="background: #000;color: #fff">
+<div id="asdf"></div>
+asdf
+<script>
+    'use strict';
+
+    const ioHook = require('iohook');
+
+    ioHook.on('mousemove', event => {
+        console.log(event); // { type: 'mousemove', x: 700, y: 400 }
+    });
+
+    // Register and start hook
+    ioHook.start();
+
+    // Alternatively, pass true to start in DEBUG mode.
+    ioHook.start(true);
+</script>
+</body>
+</html>

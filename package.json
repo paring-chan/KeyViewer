@@ -1,0 +1,33 @@
+{
+  "name": "key-viewer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "4",
+    "electronmon": "^1.1.2",
+    "node-abi": "^2.19.1"
+  },
+  "dependencies": {
+    "iohook": "^0.6.6"
+  },
+  "cmake-js": {
+    "runtime": "electron",
+    "runtimeVersion": "4.0.0"
+  },
+  "iohook": {
+    "targets": [
+      "node-67",
+      "electron-80"
+    ],
+    "platforms": [
+      "win32",
+      "darwin",
+      "linux"
+    ],
+    "arches": [
+      "x64",
+      "ia32"
+    ]
+  }
+}
