@@ -6,6 +6,7 @@
     justify-content: center;
     display: inline-flex;
     align-items: center;
+    flex-direction: column;
 }
 
 .key.active {

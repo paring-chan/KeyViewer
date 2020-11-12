@@ -23,6 +23,11 @@
     function update() {
         document.querySelector('#total').innerHTML = `TOTAL<br>${total}`
         document.querySelector('#kps').innerHTML = kps === 0 ? `KPS MAX<br>${kpsMax}` : `KPS<br>${kps}`
+        if (config.counter) {
+            for (const [, key] of Object.entries(keys)) {
+                key.elem.innerHTML = `${key.label}<br><span style="font-size: 10px;">${key.cnt}</span>`
+            }
+        }
     }
 
     function addKps() {
@@ -35,15 +40,16 @@
         }, 1000)
     }
 
-    update()
-
     for (const [idx, key] of Object.entries(keys)) {
         const elem = document.createElement('div')
         elem.classList.add('key')
         elem.innerText = key.label
         keys[idx].elem = elem
+        if (config.counter) keys[idx].cnt = 0
         document.querySelector('#root').append(elem)
     }
+
+    update()
 
     const ioHook = require('iohook');
 
@@ -54,6 +60,10 @@
                 active.push(event.keycode)
                 k.elem.classList.add('active')
                 total++
+                if (config.counter) {
+                    const i = keys.indexOf(k)
+                    if (i !== -1) keys[i].cnt++
+                }
                 addKps()
             }
         }
