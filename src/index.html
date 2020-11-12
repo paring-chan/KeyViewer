@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="-webkit-app-region: drag;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>KeyViewer</title>
@@ -16,6 +16,17 @@
     const config = require('../config.json')
     const keys = config.keys
     const active = []
+    const {remote} = require('electron')
+    const {Menu, MenuItem} = remote
+
+    const menu = new Menu()
+    menu.append(new MenuItem({label: '전체 초기화', click() { window.location.reload() }}))
+
+    window.addEventListener('contextmenu', (e) => {
+        e.preventDefault()
+        menu.popup(remote.getCurrentWindow())
+    }, false)
+
     let total = 0
     let kps = 0
     let kpsMax = 0
@@ -44,6 +55,7 @@
         const elem = document.createElement('div')
         elem.classList.add('key')
         elem.innerText = key.label
+        elem.setAttribute('style', '-webkit-app-region: drag;')
         keys[idx].elem = elem
         if (config.counter) keys[idx].cnt = 0
         document.querySelector('#root').append(elem)
