@@ -4,12 +4,18 @@ import org.jnativehook.keyboard.NativeKeyEvent
 import org.jnativehook.keyboard.NativeKeyListener
 
 class KeyListener : NativeKeyListener {
+    val pressedKeys: HashSet<Int> = HashSet()
+
     override fun nativeKeyPressed(e: NativeKeyEvent) {
-        println("Key pressed: ${NativeKeyEvent.getKeyText(e.keyCode)}")
+        if (pressedKeys.add(e.keyCode)) {
+            println("Key pressed: ${NativeKeyEvent.getKeyText(e.keyCode)}")
+        }
     }
 
     override fun nativeKeyReleased(e: NativeKeyEvent) {
-        println("Key released: ${NativeKeyEvent.getKeyText(e.keyCode)}")
+        if (pressedKeys.remove(e.keyCode)) {
+            println("Key released: ${NativeKeyEvent.getKeyText(e.keyCode)}")
+        }
     }
 
     override fun nativeKeyTyped(e: NativeKeyEvent) {

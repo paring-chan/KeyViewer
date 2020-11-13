@@ -11,9 +11,7 @@ class Key(label: String) : JButton(label) {
         isEnabled = false
         background = Color.BLACK
         setUI(object : MetalButtonUI() {
-            override fun getDisabledTextColor(): Color {
-                return Color.WHITE
-            }
+            override fun getDisabledTextColor(): Color = Color.WHITE
         })
     }
 }
