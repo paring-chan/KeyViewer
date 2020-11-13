@@ -18,5 +18,7 @@
       "label": "K"
     }
   ],
-  "counter": true
+  "counter": true,
+  "total": true,
+  "kps": true
 }

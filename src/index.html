@@ -7,9 +7,7 @@
 </head>
 <body>
 <div id="root"></div>
-<div style="display: flex;">
-    <div id="total"></div>
-    <div id="kps">KPS</div>
+<div class="optContainer">
 </div>
 <script>
     const _ = require('lodash')
@@ -18,9 +16,26 @@
     const active = []
     const {remote} = require('electron')
     const {Menu, MenuItem} = remote
+    const opt = document.querySelector('.optContainer')
+
+    if (config.total) {
+        const elem = document.createElement('div')
+        elem.id = 'total'
+        opt.append(elem)
+    }
+
+    if (config.kps) {
+        const elem = document.createElement('div')
+        elem.id = 'kps'
+        opt.append(elem)
+    }
 
     const menu = new Menu()
-    menu.append(new MenuItem({label: '전체 초기화', click() { window.location.reload() }}))
+    menu.append(new MenuItem({
+        label: '전체 초기화', click() {
+            window.location.reload()
+        }
+    }))
 
     window.addEventListener('contextmenu', (e) => {
         e.preventDefault()
@@ -32,8 +47,14 @@
     let kpsMax = 0
 
     function update() {
-        document.querySelector('#total').innerHTML = `TOTAL<br>${total}`
-        document.querySelector('#kps').innerHTML = kps === 0 ? `KPS MAX<br>${kpsMax}` : `KPS<br>${kps}`
+        const tot = document.querySelector('#total')
+        if (tot) {
+            tot.innerHTML = `TOTAL<br>${total}`
+        }
+        const kpsEl = document.querySelector('#kps')
+        if (kpsEl) {
+            kpsEl.innerHTML = kps === 0 ? `KPS MAX<br>${kpsMax}` : `KPS<br>${kps}`
+        }
         if (config.counter) {
             for (const [, key] of Object.entries(keys)) {
                 key.elem.innerHTML = `${key.label}<br><span style="font-size: 10px;">${key.cnt}</span>`
@@ -66,9 +87,9 @@
     const ioHook = require('iohook');
 
     ioHook.on('keydown', event => {
-        const k = keys.find(r=>r.key === event.keycode)
+        const k = keys.find(r => r.key === event.keycode)
         if (k) {
-            if (!active.find(r=>r===event.keycode)) {
+            if (!active.find(r => r === event.keycode)) {
                 active.push(event.keycode)
                 k.elem.classList.add('active')
                 total++
@@ -81,9 +102,9 @@
         }
     })
     ioHook.on('keyup', event => {
-        const k = keys.find(r=>r.key === event.keycode)
+        const k = keys.find(r => r.key === event.keycode)
         if (k) {
-            if (active.find(r=>r===event.keycode)) {
+            if (active.find(r => r === event.keycode)) {
                 _.remove(active, (i) => i === event.keycode)
                 k.elem.classList.remove('active')
             }

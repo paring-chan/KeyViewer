@@ -15,7 +15,6 @@
 }
 
 #total {
-    width: 50vw;
     height: 60px;
     text-align: center;
     background: #000;
@@ -23,16 +22,17 @@
     justify-content: center;
     display: inline-flex;
     align-items: center;
+    flex-grow: 1;
 }
 
 #kps {
-    width: 50vw;
     height: 60px;
     text-align: center;
     background: #000;
     color: #fff;
     justify-content: center;
     display: inline-flex;
+    flex-grow: 1;
     align-items: center;
 }
 
@@ -40,4 +40,9 @@ body {
     margin: 0;
     overflow: hidden;
     user-select: none;
+}
+
+.optContainer {
+    width: 100vw;
+    display: flex;
 }
