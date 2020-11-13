@@ -5,7 +5,9 @@ let win
 
 function createWindow() {
     win = new BrowserWindow({
-        width: 50 * config.keys.length, height: 110, frame: false,
+        width: 50 * config.keys.length, height: (
+            !config.kps && !config.total
+        ) ? 50 : 110, frame: false,
         alwaysOnTop: Boolean(config.top),
         webPreferences: {
             nodeIntegration: true
