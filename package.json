@@ -5,6 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "8",
+    "electron-builder": "^22.11.1",
     "electronmon": "^1.1.2",
     "node-abi": "^2.19.1"
   },
@@ -29,6 +30,39 @@
     "arches": [
       "x64",
       "ia32"
+    ]
+  },
+  "build": {
+    "productName": "KeyViewer",
+    "appId": "com.github.pikokr.keyviewer",
+    "win": {
+      "target": [
+        "zip",
+        "nsis"
+      ]
+    },
+    "asar": true,
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "output": "./app/",
+      "app": "."
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ]
+    },
+    "linux": {
+      "target": [
+        "appimage"
+      ],
+      "category": "Utility"
+    },
+    "asarUnpack": [
+      "config.json"
     ]
   }
 }
