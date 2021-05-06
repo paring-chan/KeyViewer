@@ -36,6 +36,10 @@
             window.location.reload()
         }
     }))
+    menu.append(new MenuItem({
+        label: '종료',
+        role: 'quit'
+    }))
 
     window.addEventListener('contextmenu', (e) => {
         e.preventDefault()
