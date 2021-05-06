@@ -36,4 +36,4 @@ jobs:
       - name: Build/publish
         run: yarn electron-builder --publish=always
         env:
-          GH_TOKEN: ${{ secrets.github_token }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
