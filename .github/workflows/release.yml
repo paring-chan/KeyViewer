@@ -33,8 +33,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn
-      - name: Transpile Typescript and build react project
-        run: yarn tsc ./public/electron.ts && yarn react-scripts build
       - name: Build/publish
         run: yarn electron-builder --publish=always
         env:
