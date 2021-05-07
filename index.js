@@ -1,6 +1,8 @@
 const {app, BrowserWindow} = require('electron')
 const config = require('./config.json')
 
+app.allowRendererProcessReuse = false
+
 let win
 
 function createWindow() {
@@ -9,10 +11,13 @@ function createWindow() {
             !config.kps && !config.total
         ) ? 50 : 110, frame: false,
         alwaysOnTop: Boolean(config.top),
+        resizable: false,
         webPreferences: {
-            nodeIntegration: true
-        },
-        resizable: false
+            preload: require('path').join(__dirname, 'preload.js'),
+            nodeIntegration: true,
+            enableRemoteModule: true,
+            contextIsolation: false,
+        }
     })
 
     win.loadFile('src/index.html')

@@ -10,12 +10,7 @@
 <div class="optContainer">
 </div>
 <script>
-    const _ = require('lodash')
-    const config = require('../config.json')
-    const keys = config.keys
     const active = []
-    const {remote} = require('electron')
-    const {Menu, MenuItem} = remote
     const opt = document.querySelector('.optContainer')
 
     if (config.total) {
