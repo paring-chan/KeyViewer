@@ -5,7 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "8",
-    "electron-builder": "^22.11.1",
+    "electron-builder": "^22.10.5",
     "electronmon": "^1.1.2",
     "node-abi": "^2.19.1"
   },
