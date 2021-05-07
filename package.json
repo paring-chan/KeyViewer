@@ -41,7 +41,7 @@
         "nsis"
       ]
     },
-    "asar": true,
+    "asar": false,
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
@@ -60,9 +60,6 @@
         "appimage"
       ],
       "category": "Utility"
-    },
-    "asarUnpack": [
-      "config.json"
-    ]
+    }
   }
 }
