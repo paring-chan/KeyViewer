@@ -10,7 +10,7 @@
     "node-abi": "^2.26.0"
   },
   "dependencies": {
-    "iohook": "^0.9.1",
+    "iohook": "0.9.0",
     "lodash": "^4.17.20"
   },
   "cmake-js": {

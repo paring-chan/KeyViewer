@@ -1067,10 +1067,10 @@ ini@^1.3.4, ini@~1.3.0:
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
   integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
 
-iohook@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/iohook/-/iohook-0.9.1.tgz#6577c1fe37c74de1793bcfdfedfc4e04337d11e4"
-  integrity sha512-e9iy2wv8VY8mMdhZHTESI5Ov/llzXSgQ6WZ1LTlnJWVKqNn98hOazPztTATKXLuPKL4CxUKeEuiHjZmMdxxsiA==
+iohook@0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/iohook/-/iohook-0.9.0.tgz#dae8311e2e9b9da08971bed23c66068a25c7ad44"
+  integrity sha512-SYQn4bwcXqe36k6k93F9+u3SppEaFNUGmV6Nv3M1r69qsO9dFLcz96buEn+6xI/hOtfPXLcNjsotx2gk2LaWcg==
   dependencies:
     nugget "^2.0.1"
     pump "^1.0.3"
